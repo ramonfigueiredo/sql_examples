@@ -452,7 +452,8 @@ Go back to [Contents](#contents).
 ```sql
 SELECT City FROM Customers
 UNION
-SELECT City FROM Suppliers ORDER BY City;
+SELECT City FROM Suppliers 
+ORDER BY City;
 ```
 
 * UNION ALL
@@ -460,7 +461,8 @@ SELECT City FROM Suppliers ORDER BY City;
 ```sql
 SELECT City FROM Customers
 UNION ALL
-SELECT City FROM Suppliers ORDER BY City;
+SELECT City FROM Suppliers 
+ORDER BY City;
 ```
 
 * UNION With WHERE
