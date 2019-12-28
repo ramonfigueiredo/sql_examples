@@ -200,13 +200,13 @@ Go back to [Contents](#contents).
 * DELETE
 
 ```sql
-
+DELETE FROM Customers WHERE CustomerName='Elvis Presley';
 ```
 
 * DELETE All Records
 
 ```sql
-
+DELETE FROM Customers;
 ```
 
 Go back to [Contents](#contents).
