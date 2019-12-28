@@ -177,19 +177,20 @@ Go back to [Contents](#contents).
 * UPDATE Table
 
 ```sql
-
+UPDATE Customers SET ContactName='Jim Carrey', City='Newmarket' WHERE CustomerID=1;
 ```
 
 * UPDATE Multiple Records
 
 ```sql
-
+UPDATE Customers SET ContactName='Cobie Smulders' WHERE Country='Canada';
 ```
 
 * UPDATE Warning (if you omit the WHERE clause, all records will be updated)
 
 ```sql
-
+/*You should Restore the Database after finishing this example*/
+UPDATE Customers SET ContactName='Pedro';
 ```
 
 Go back to [Contents](#contents).
