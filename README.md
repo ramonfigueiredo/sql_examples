@@ -260,19 +260,19 @@ Go back to [Contents](#contents).
 * COUNT()
 
 ```sql
-
+SELECT COUNT(ProductID) FROM Products;
 ```
 
 * AVG()
 
 ```sql
-
+SELECT AVG(Price) FROM Products;
 ```
 
 * SUM()
 
 ```sql
-
+SELECT SUM(Quantity) FROM OrderDetails;
 ```
 
 Go back to [Contents](#contents).
