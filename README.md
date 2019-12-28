@@ -450,25 +450,33 @@ Go back to [Contents](#contents).
 * UNION
 
 ```sql
-
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers ORDER BY City;
 ```
 
 * UNION ALL
 
 ```sql
-
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers ORDER BY City;
 ```
 
 * UNION With WHERE
 
 ```sql
-
+SELECT City, Country FROM Customers WHERE Country='Germany'
+UNION
+SELECT City, Country FROM Suppliers WHERE Country='Germany' ORDER BY City;
 ```
 
 * UNION ALL With WHERE
 
 ```sql
-
+SELECT City, Country FROM Customers WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM Suppliers WHERE Country='Germany' ORDER BY City;
 ```
 
 Go back to [Contents](#contents).
