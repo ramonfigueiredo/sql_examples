@@ -7,13 +7,13 @@ Some SQL Examples
 
 ## SQL SELECT
 
-1. SELECT Column
+* SELECT Column
 
 ```sql
 SELECT CustomerName, City FROM Customers;
 ```
 
-2. SELECT *
+* SELECT *
 
 ```sql
 SELECT * FROM Customers;
