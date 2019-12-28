@@ -422,25 +422,25 @@ Go back to [Contents](#contents).
 * INNER JOIN
 
 ```sql
-
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
 ```
 
 * LEFT JOIN
 
 ```sql
-
+SELECT Customers.CustomerName, Orders.OrderID FROM Customers LEFT JOIN Orders ON Customers.CustomerID=Orders.CustomerID ORDER BY Customers.CustomerName;
 ```
 
 * RIGHT JOIN
 
 ```sql
-
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName FROM Orders RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID ORDER BY Orders.OrderID;
 ```
 
 * Self JOIN
 
 ```sql
-
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City FROM Customers A, Customers B WHERE A.CustomerID <> B.CustomerID AND A.City = B.City ORDER BY A.City;
 ```
 
 Go back to [Contents](#contents).
