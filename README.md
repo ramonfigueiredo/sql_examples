@@ -510,13 +510,13 @@ Go back to [Contents](#contents).
 * HAVING and GROUP BY
 
 ```sql
-
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID) > 5;
 ```
 
 * HAVING and ORDER BY
 
 ```sql
-
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID) > 5 ORDER BY COUNT(CustomerID) DESC;
 ```
 
 Go back to [Contents](#contents).
