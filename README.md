@@ -552,13 +552,15 @@ Go back to [Contents](#contents).
 * INSERT INTO SELECT
 
 ```sql
-
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
 ```
 
 * INSERT INTO SELECT with WHERE
 
 ```sql
-
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers WHERE Country='Germany';
 ```
 
 Go back to [Contents](#contents).
