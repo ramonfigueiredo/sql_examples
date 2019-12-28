@@ -322,25 +322,25 @@ Go back to [Contents](#contents).
 * Using the % Wildcard
 
 ```sql
-
+SELECT * FROM Customers WHERE City LIKE 'ra%';
 ```
 
 * Using the _ Wildcard
 
 ```sql
-
+SELECT * FROM Customers WHERE City LIKE '_ontréal';
 ```
 
 * Using the [charlist] Wildcard
 
 ```sql
-
+SELECT * FROM Customers WHERE City LIKE '[bsp]%';
 ```
 
 * Using the [!charlist] Wildcard
 
 ```sql
-
+SELECT * FROM Customers WHERE City LIKE '[!bsp]%';
 ```
 
 Go back to [Contents](#contents).
