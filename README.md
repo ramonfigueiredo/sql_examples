@@ -356,7 +356,7 @@ SELECT * FROM Customers WHERE Country IN ('Canada', 'France', 'Brazil');
 * NOT IN
 
 ```sql
-
+SELECT * FROM Customers WHERE Country NOT IN ('Canada', 'France', 'Brazil');
 ```
 
 Go back to [Contents](#contents).
@@ -366,31 +366,31 @@ Go back to [Contents](#contents).
 * BETWEEN
 
 ```sql
-
+SELECT * FROM Products WHERE Price BETWEEN 10 AND 20;
 ```
 
 * NOT BETWEEN
 
 ```sql
-
+SELECT * FROM Products WHERE Price NOT BETWEEN 10 AND 20;
 ```
 
 * BETWEEN with IN
 
 ```sql
-
+SELECT * FROM Products WHERE Price BETWEEN 10 AND 20 AND NOT CategoryID IN (1,2,3);
 ```
 
 * BETWEEN Text Values
 
 ```sql
-
+SELECT * FROM Products WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni' ORDER BY ProductName;
 ```
 
 * NOT BETWEEN Text Values
 
 ```sql
-
+SELECT * FROM Products WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni' ORDER BY ProductName;
 ```
 
 Go back to [Contents](#contents).
