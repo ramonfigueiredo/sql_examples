@@ -69,8 +69,7 @@ SELECT COUNT(DISTINCT Country) FROM Customers;
 * SELECT COUNT(DISTINCT column_name) workaround for MS ACCESS
 
 ```sql
-SELECT COUNT(*) AS DistinctCountries
-FROM (SELECT DISTINCT Country FROM Customers);
+SELECT COUNT(*) AS DistinctCountries FROM (SELECT DISTINCT Country FROM Customers);
 ```
 
 Go back to [Contents](#contents).
@@ -80,15 +79,13 @@ Go back to [Contents](#contents).
 * WHERE Clause
 
 ```sql
-SELECT * FROM Customers
-WHERE Country='Brazil';
+SELECT * FROM Customers WHERE Country='Brazil';
 ```
 
 * Text Fields vs. Numeric Fields
 
 ```sql
-SELECT * FROM Customers
-WHERE CustomerID=1;
+SELECT * FROM Customers WHERE CustomerID=1;
 ```
 
 Go back to [Contents](#contents).
@@ -98,22 +95,19 @@ Go back to [Contents](#contents).
 * AND
 
 ```sql
-SELECT * FROM Customers
-WHERE Country='Brazil' AND City='São Paulo';
+SELECT * FROM Customers WHERE Country='Brazil' AND City='São Paulo';
 ```
 
 * OR
 
 ```sql
-SELECT * FROM Customers
-WHERE Country='Brazil' OR City='Belo Horizonte';
+SELECT * FROM Customers WHERE Country='Brazil' OR City='Belo Horizonte';
 ```
 
 * NOT
 
 ```sql
-SELECT * FROM Customers
-WHERE NOT Country='Brazil';
+SELECT * FROM Customers WHERE NOT Country='Brazil';
 ```
 
 * Combining AND, OR and NOT
