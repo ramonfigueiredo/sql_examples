@@ -80,13 +80,15 @@ Go back to [Contents](#contents).
 * WHERE Clause
 
 ```sql
-
+SELECT * FROM Customers
+WHERE Country='Brazil';
 ```
 
 * Text Fields vs. Numeric Fields
 
 ```sql
-
+SELECT * FROM Customers
+WHERE CustomerID=1;
 ```
 
 Go back to [Contents](#contents).
@@ -95,11 +97,30 @@ Go back to [Contents](#contents).
 
 * AND
 
+```sql
+SELECT * FROM Customers
+WHERE Country='Brazil' AND City='São Paulo';
+```
+
 * OR
+
+```sql
+SELECT * FROM Customers
+WHERE Country='Brazil' OR City='Belo Horizonte';
+```
 
 * NOT
 
+```sql
+SELECT * FROM Customers
+WHERE NOT Country='Brazil';
+```
+
 * Combining AND, OR and NOT
+
+```sql
+SELECT * FROM Customers WHERE Country='Canada' AND (City='Montréal' OR City='Vancouver')
+```
 
 Go back to [Contents](#contents).
 
@@ -107,9 +128,21 @@ Go back to [Contents](#contents).
 
 * ORDER BY
 
+```sql
+
+```
+
 * ORDER BY DESC
 
+```sql
+
+```
+
 * ORDER BY Several Columns
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -117,7 +150,15 @@ Go back to [Contents](#contents).
 
 * INSERT INTO
 
+```sql
+
+```
+
 * Insert data in specific columns
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -125,7 +166,15 @@ Go back to [Contents](#contents).
 
 * IS NULL Operator
 
+```sql
+
+```
+
 * IS NOT NULL Operator
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -133,9 +182,21 @@ Go back to [Contents](#contents).
 
 * UPDATE Table
 
+```sql
+
+```
+
 * UPDATE Multiple Records
 
+```sql
+
+```
+
 * UPDATE Warning (if you omit the WHERE clause, all records will be updated)
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -143,7 +204,15 @@ Go back to [Contents](#contents).
 
 * DELETE
 
+```sql
+
+```
+
 * DELETE All Records
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -151,11 +220,27 @@ Go back to [Contents](#contents).
 
 * SELECT TOP
 
+```sql
+
+```
+
 * LIMIT
+
+```sql
+
+```
 
 * SELECT TOP PERCENT
 
+```sql
+
+```
+
 * SELECT TOP and add a WHERE Clause
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -163,7 +248,15 @@ Go back to [Contents](#contents).
 
 * MIN()
 
+```sql
+
+```
+
 * MAX()
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -171,9 +264,21 @@ Go back to [Contents](#contents).
 
 * COUNT()
 
+```sql
+
+```
+
 * AVG()
 
+```sql
+
+```
+
 * SUM()
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -181,15 +286,39 @@ Go back to [Contents](#contents).
 
 * LIKE - select all table rows starting with "a"
 
+```sql
+
+```
+
 * LIKE - select all table rows ending with "a"
+
+```sql
+
+```
 
 * LIKE - select all table rows that have "or" in any position
 
+```sql
+
+```
+
 * LIKE - select all table rows that have "r" in the second position
+
+```sql
+
+```
 
 * LIKE - select all table rows that starts with "a" and ends with "o"
 
+```sql
+
+```
+
 * LIKE - select all table rows that does NOT start with "a"
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -197,11 +326,27 @@ Go back to [Contents](#contents).
 
 * Using the % Wildcard
 
+```sql
+
+```
+
 * Using the _ Wildcard
+
+```sql
+
+```
 
 * Using the [charlist] Wildcard
 
+```sql
+
+```
+
 * Using the [!charlist] Wildcard
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -209,7 +354,15 @@ Go back to [Contents](#contents).
 
 * IN
 
+```sql
+
+```
+
 * NOT IN
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -217,13 +370,33 @@ Go back to [Contents](#contents).
 
 * BETWEEN
 
+```sql
+
+```
+
 * NOT BETWEEN
+
+```sql
+
+```
 
 * BETWEEN with IN
 
+```sql
+
+```
+
 * BETWEEN Text Values
 
+```sql
+
+```
+
 * NOT BETWEEN Text Values
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -231,9 +404,21 @@ Go back to [Contents](#contents).
 
 * Alias for Columns
 
+```sql
+
+```
+
 * Two Aliases
 
+```sql
+
+```
+
 * Alias for Tables
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -241,11 +426,27 @@ Go back to [Contents](#contents).
 
 * INNER JOIN
 
+```sql
+
+```
+
 * LEFT JOIN
+
+```sql
+
+```
 
 * RIGHT JOIN
 
+```sql
+
+```
+
 * Self JOIN
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -253,11 +454,27 @@ Go back to [Contents](#contents).
 
 * UNION
 
+```sql
+
+```
+
 * UNION ALL
+
+```sql
+
+```
 
 * UNION With WHERE
 
+```sql
+
+```
+
 * UNION ALL With WHERE
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -265,9 +482,21 @@ Go back to [Contents](#contents).
 
 * GROUP BY
 
+```sql
+
+```
+
 * GROUP BY and ORDER BY
 
+```sql
+
+```
+
 * GROUP BY With JOIN
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -275,7 +504,15 @@ Go back to [Contents](#contents).
 
 * HAVING and GROUP BY
 
+```sql
+
+```
+
 * HAVING and ORDER BY
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -283,13 +520,25 @@ Go back to [Contents](#contents).
 
 * EXISTS
 
+```sql
+
+```
+
 Go back to [Contents](#contents).
 
 ## SQL ANY ALL
 
 * ANY
 
+```sql
+
+```
+
 * ALL
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -297,7 +546,15 @@ Go back to [Contents](#contents).
 
 * INSERT INTO SELECT
 
+```sql
+
+```
+
 * INSERT INTO SELECT with WHERE
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -305,7 +562,15 @@ Go back to [Contents](#contents).
 
 * CASE 1
 
+```sql
+
+```
+
 * CASE 2
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -313,9 +578,21 @@ Go back to [Contents](#contents).
 
 * Single Line Comments
 
+```sql
+
+```
+
 * Single Line Comments At The End Of a Line
 
+```sql
+
+```
+
 * Multi-line Comments
+
+```sql
+
+```
 
 Go back to [Contents](#contents).
 
@@ -323,40 +600,113 @@ Go back to [Contents](#contents).
 
 * SQL Create DB
 
+```sql
+
+```
+
 * SQL DROP DB
+
+```sql
+
+```
 
 * SQL Backup DB
 
+```sql
+
+```
+
 * SQL Create Table
+
+```sql
+
+```
 
 * SQL Drop Table
 
+```sql
+
+```
+
 * SQL Alter Table
+
+```sql
+
+```
 
 * SQL Constraints
 
+```sql
+
+```
+
 * SQL Not Null
+
+```sql
+
+```
 
 * SQL Unique
 
+```sql
+
+```
+
 * SQL Primary Key
+
+```sql
+
+```
 
 * SQL Foreign Key
 
+```sql
+
+```
+
 * SQL Check
+
+```sql
+
+```
 
 * SQL Default
 
+```sql
+
+```
+
 * SQL Index
+
+```sql
+
+```
 
 * SQL Auto Increment
 
+```sql
+
+```
+
 * SQL Dates
+
+```sql
+
+```
 
 * SQL Views
 
+```sql
+
+```
+
 * SQL Injection
 
+```sql
+
+```
+
 * SQL Hosting
+
 
 Go back to [Contents](#contents).
