@@ -350,7 +350,7 @@ Go back to [Contents](#contents).
 * IN
 
 ```sql
-
+SELECT * FROM Customers WHERE Country IN ('Canada', 'France', 'Brazil');
 ```
 
 * NOT IN
