@@ -244,13 +244,13 @@ Go back to [Contents](#contents).
 * MIN()
 
 ```sql
-
+SELECT MIN(Price) AS SmallestPrice FROM Products; 
 ```
 
 * MAX()
 
 ```sql
-
+SELECT MAX(Price) AS LargestPrice FROM Products; 
 ```
 
 Go back to [Contents](#contents).
