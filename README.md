@@ -282,37 +282,37 @@ Go back to [Contents](#contents).
 * LIKE - select all table rows starting with "a"
 
 ```sql
-
+SELECT * FROM Customers WHERE CustomerName LIKE 'a%';
 ```
 
 * LIKE - select all table rows ending with "a"
 
 ```sql
-
+SELECT * FROM Customers WHERE CustomerName LIKE '%a';
 ```
 
 * LIKE - select all table rows that have "or" in any position
 
 ```sql
-
+SELECT * FROM Customers WHERE CustomerName LIKE '%or%'
 ```
 
 * LIKE - select all table rows that have "r" in the second position
 
 ```sql
-
+SELECT * FROM Customers WHERE CustomerName LIKE '_r%';
 ```
 
 * LIKE - select all table rows that starts with "a" and ends with "o"
 
 ```sql
-
+SELECT * FROM Customers WHERE ContactName LIKE 'a%o';
 ```
 
 * LIKE - select all table rows that does NOT start with "a"
 
 ```sql
-
+SELECT * FROM Customers WHERE CustomerName NOT LIKE 'a%';
 ```
 
 Go back to [Contents](#contents).
