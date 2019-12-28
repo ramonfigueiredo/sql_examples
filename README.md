@@ -9,7 +9,7 @@ Some SQL Examples
 5. [SQL ORDER BY](#sql-order-by)
 6. [SQL INSERT INTO](#sql-insert-into)
 7. [SQL NULL Values](#sql-null-values)
-8. [SQL Update](#sql-update)
+8. [SQL UPDATE](#sql-update)
 9. [SQL DELETE](#sql-delete)
 10. [SQL SELECT TOP](#sql-select-top)
 11. [SQL MIN MAX](#sql-min-max)
