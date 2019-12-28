@@ -488,19 +488,19 @@ Go back to [Contents](#contents).
 * GROUP BY
 
 ```sql
-
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country;
 ```
 
 * GROUP BY and ORDER BY
 
 ```sql
-
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC;
 ```
 
 * GROUP BY With JOIN
 
 ```sql
-
+SELECT Shippers.ShipperName,COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID GROUP BY ShipperName;
 ```
 
 Go back to [Contents](#contents).
