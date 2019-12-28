@@ -595,19 +595,23 @@ Go back to [Contents](#contents).
 * Single Line Comments
 
 ```sql
-
+-- Select all:
+SELECT * FROM Customers;
 ```
 
 * Single Line Comments At The End Of a Line
 
 ```sql
-
+SELECT * FROM Customers -- WHERE City='Toronto';
 ```
 
 * Multi-line Comments
 
 ```sql
-
+/*Select all the columns
+of all the records
+in the Customers table:*/
+SELECT * FROM Customers;
 ```
 
 Go back to [Contents](#contents).
