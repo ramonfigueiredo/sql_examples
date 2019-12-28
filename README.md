@@ -161,13 +161,13 @@ Go back to [Contents](#contents).
 * IS NULL Operator
 
 ```sql
-
+SELECT CustomerName, ContactName, Address FROM Customers WHERE Address IS NULL;
 ```
 
 * IS NOT NULL Operator
 
 ```sql
-
+SELECT CustomerName, ContactName, Address FROM Customers WHERE Address IS NOT NULL;
 ```
 
 Go back to [Contents](#contents).
