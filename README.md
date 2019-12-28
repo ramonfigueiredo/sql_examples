@@ -216,25 +216,25 @@ Go back to [Contents](#contents).
 * SELECT TOP
 
 ```sql
-
+SELECT TOP 3 * FROM Customers;
 ```
 
 * LIMIT
 
 ```sql
-
+SELECT * FROM Customers LIMIT 3;
 ```
 
 * SELECT TOP PERCENT
 
 ```sql
-
+SELECT TOP 50 PERCENT * FROM Customers;
 ```
 
 * SELECT TOP and add a WHERE Clause
 
 ```sql
-
+SELECT TOP 3 * FROM Customers WHERE Country='Brazil';
 ```
 
 Go back to [Contents](#contents).
