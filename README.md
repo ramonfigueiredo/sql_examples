@@ -526,7 +526,7 @@ Go back to [Contents](#contents).
 * EXISTS
 
 ```sql
-
+SELECT SupplierName FROM Suppliers WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
 ```
 
 Go back to [Contents](#contents).
@@ -536,13 +536,13 @@ Go back to [Contents](#contents).
 * ANY
 
 ```sql
-
+SELECT ProductName  FROM Products WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
 ```
 
 * ALL
 
 ```sql
-
+SELECT ProductName  FROM Products WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails WHERE Quantity = 10); 
 ```
 
 Go back to [Contents](#contents).
