@@ -123,19 +123,19 @@ Go back to [Contents](#contents).
 * ORDER BY
 
 ```sql
-
+SELECT * FROM Customers ORDER BY Country;
 ```
 
 * ORDER BY DESC
 
 ```sql
-
+SELECT * FROM Customers ORDER BY Country DESC;
 ```
 
 * ORDER BY Several Columns
 
 ```sql
-
+SELECT * FROM Customers ORDER BY Country, CustomerName;
 ```
 
 Go back to [Contents](#contents).
@@ -145,13 +145,13 @@ Go back to [Contents](#contents).
 * INSERT INTO
 
 ```sql
-
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) VALUES ('Customer Name 1','Contact Name 1','Address 1','Montréal','123456','Canada');
 ```
 
 * Insert data in specific columns
 
 ```sql
-
+INSERT INTO Customers (CustomerName, City, Country) VALUES ('Customer Name 2', 'São Paulo', 'Brazil');
 ```
 
 Go back to [Contents](#contents).
