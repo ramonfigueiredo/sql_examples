@@ -400,19 +400,19 @@ Go back to [Contents](#contents).
 * Alias for Columns
 
 ```sql
-
+SELECT CustomerID AS ID, CustomerName AS Customer FROM Customers;
 ```
 
 * Two Aliases
 
 ```sql
-
+SELECT CustomerName AS Customer, ContactName AS [Contact Person] FROM Customers;
 ```
 
 * Alias for Tables
 
 ```sql
-
+SELECT o.OrderID, o.OrderDate, c.CustomerName FROM Customers AS c, Orders AS o WHERE c.CustomerName="Around the Horn" AND c.CustomerID=o.CustomerID;
 ```
 
 Go back to [Contents](#contents).
