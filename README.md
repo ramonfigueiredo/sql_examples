@@ -618,32 +618,32 @@ Go back to [Contents](#contents).
 
 ## SQL Database
 
-* SQL Create DB
+### SQL Create DB
 
 ```sql
 CREATE DATABASE testDB;
 ```
 
-* SQL DROP DB
+### SQL DROP DB
 
 ```sql
 DROP DATABASE testDB;
 ```
 
-* SQL Backup DB
+### SQL Backup DB
 
 ```sql
 BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';
 ```
 
-* SQL Backup with differential
+#### SQL Backup with differential
 	* Tip: A differential back up reduces the back up time (since only the changes are backed up).
 
 ```sql
 BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak' WITH DIFFERENTIAL;
 ```
 
-* SQL Create Table
+### SQL Create Table
 
 ```sql
 CREATE TABLE Persons (
@@ -655,33 +655,33 @@ CREATE TABLE Persons (
 );
 ```
 
-* Create Table Using Another Table
+#### Create Table Using Another Table
 
 ```sql
 CREATE TABLE TestTable AS
 SELECT customername, contactname FROM customers;
 ```
 
-* SQL Drop Table
+### SQL Drop Table
 
 ```sql
 DROP TABLE Persons;
 ```
 
-* SQL Alter Table
+### SQL Alter Table
 
 ```sql
 ALTER TABLE Customers ADD Email varchar(255);
 ```
 
-* ALTER TABLE - DROP COLUMN
+#### ALTER TABLE - DROP COLUMN
 
 ```sql
 ALTER TABLE Customers
 DROP COLUMN Email;
 ```
 
-* ALTER TABLE - ALTER/MODIFY COLUMN
+#### ALTER TABLE - ALTER/MODIFY COLUMN
 
 **SQL Server / MS Access:**
 
@@ -704,20 +704,20 @@ ALTER TABLE table_name
 MODIFY column_name datatype;
 ```
 
-* SQL Constraints
+### SQL Constraints
 
-	* The following constraints are commonly used in SQL:
+* The following constraints are commonly used in SQL:
 
-		* **NOT NULL** Ensures that a column cannot have a NULL value
+	* **NOT NULL** Ensures that a column cannot have a NULL value
 
-		* **UNIQUE** Ensures that all values in a column are different
-		* **PRIMARY KEY** A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
-		* **FOREIGN KEY** Uniquely identifies a row/record in another table
-		* **CHECK** Ensures that all values in a column satisfies a specific condition
-		* **DEFAULT** Sets a default value for a column when no value is specified
-		* **INDEX** Used to create and retrieve data from the database very quickly
+	* **UNIQUE** Ensures that all values in a column are different
+	* **PRIMARY KEY** A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+	* **FOREIGN KEY** Uniquely identifies a row/record in another table
+	* **CHECK** Ensures that all values in a column satisfies a specific condition
+	* **DEFAULT** Sets a default value for a column when no value is specified
+	* **INDEX** Used to create and retrieve data from the database very quickly
 
-* SQL Not Null
+### SQL Not Null
 
 ```sql
 CREATE TABLE Persons (
@@ -728,14 +728,14 @@ CREATE TABLE Persons (
 );
 ```
 
-* SQL NOT NULL on ALTER TABLE
+#### SQL NOT NULL on ALTER TABLE
 
 ```sql
 ALTER TABLE Persons MODIFY Age int NOT NULL;
 );
 ```
 
-* SQL Unique
+### SQL Unique
 
 The following SQL creates a UNIQUE constraint on the "ID" column when the "Persons" table is created:
 
@@ -893,7 +893,7 @@ ALTER TABLE Persons
 DROP CONSTRAINT PK_Person;
 ```
 
-* SQL Foreign Key
+### SQL Foreign Key
 
 A FOREIGN KEY is a key used to link two tables together.
 
@@ -971,7 +971,7 @@ ALTER TABLE Orders
 DROP CONSTRAINT FK_PersonOrder;
 ```
 
-* SQL Check
+### SQL Check
 
 The CHECK constraint is used to limit the value range that can be placed in a column.
 
@@ -1050,7 +1050,7 @@ ALTER TABLE Persons
 DROP CHECK CHK_PersonAge;
 ```
 
-* SQL Default
+### SQL Default
 
 The DEFAULT constraint is used to provide a default value for a column.
 
@@ -1078,7 +1078,7 @@ CREATE TABLE Orders (
 );
 ```
 
-* SQL DEFAULT on ALTER TABLE
+#### SQL DEFAULT on ALTER TABLE
 
 **MySQL:**
 
@@ -1109,7 +1109,7 @@ ALTER TABLE Persons
 MODIFY City DEFAULT 'Montréal';
 ```
 
-* DROP a DEFAULT Constraint
+#### DROP a DEFAULT Constraint
 
 **MySQL:**
 
@@ -1125,13 +1125,13 @@ ALTER TABLE Persons
 ALTER COLUMN City DROP DEFAULT;
 ```
 
-* SQL Index
+### SQL Index
 
 The CREATE INDEX statement is used to create indexes in tables.
 
 Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
 
-* CREATE INDEX Example
+#### CREATE INDEX Example
 
 ```sql
 CREATE INDEX idx_lastname ON Persons (LastName);
@@ -1143,7 +1143,7 @@ If you want to create an index on a combination of columns, you can list the col
 CREATE INDEX idx_pname ON Persons (LastName, FirstName);
 ```
 
-* DROP INDEX Statement
+#### DROP INDEX Statement
 
 **MS Access:**
 
@@ -1170,7 +1170,7 @@ ALTER TABLE table_name
 DROP INDEX index_name;
 ```
 
-* SQL Auto Increment
+### SQL Auto Increment
 
 Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
 
@@ -1274,13 +1274,13 @@ INSERT INTO Persons (Personid,FirstName,LastName)
 VALUES (seq_person.nextval,'Will','Smith');
 ```
 
-* SQL Dates
+### SQL Dates
 
 The most difficult part when working with dates is to be sure that the format of the date you are trying to insert, matches the format of the date column in the database.
 
 As long as your data contains only the date portion, your queries will work as expected. However, if a time portion is involved, it gets more complicated.
 
-* SQL Date Data Types
+#### SQL Date Data Types
 
 **MySQL** comes with the following data types for storing a date or a date/time value in the database:
 	* DATE - format YYYY-MM-DD
@@ -1300,7 +1300,7 @@ As long as your data contains only the date portion, your queries will work as e
 SELECT * FROM Orders WHERE OrderDate='2008-11-11'
 ```
 
-* SQL Views
+### SQL Views
 
 In SQL, a view is a virtual table based on the result-set of an SQL statement.
 
@@ -1308,7 +1308,7 @@ A view contains rows and columns, just like a real table. The fields in a view a
 
 You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
 
-* SQL CREATE VIEW Examples
+#### SQL CREATE VIEW Examples
 
 ```sql
 CREATE VIEW [Brazil Customers] AS
@@ -1338,11 +1338,11 @@ We can query the view above as follows:
 SELECT * FROM [Products Above Average Price];
 ```
 
-* SQL Updating a View
+#### SQL Updating a View
 
 A view can be updated with the CREATE OR REPLACE VIEW command.
 
-* SQL CREATE OR REPLACE VIEW
+#### SQL CREATE OR REPLACE VIEW
 
 ```sql
 CREATE OR REPLACE VIEW [Brazil Customers] AS
@@ -1351,13 +1351,13 @@ FROM Customers
 WHERE Country = "Brazil";
 ```
 
-* SQL Dropping a View
+#### SQL Dropping a View
 
 ```sql
 DROP VIEW [Brazil Customers];
 ```
 
-* SQL Injection
+### SQL Injection
 
 SQL injection is a code injection technique that might destroy your database.
 
@@ -1365,7 +1365,7 @@ SQL injection is one of the most common web hacking techniques.
 
 SQL injection is the placement of malicious code in SQL statements, via web page input.
 
-* SQL in Web Pages
+#### SQL in Web Pages
 
 SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.
 
@@ -1487,7 +1487,7 @@ The valid SQL statement would look like this:
 SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
 ```
 
-* Use SQL Parameters for Protection
+#### Use SQL Parameters for Protection
 
 To protect a web site from SQL injection, you can use SQL parameters.
 
@@ -1515,7 +1515,7 @@ txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
 db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 ```
 
-* Examples
+#### Examples
 
 The following examples shows how to build parameterized queries in some common web languages.
 
@@ -1554,7 +1554,7 @@ $stmt->bindParam(':cit', $txtCit);
 $stmt->execute();
 ```
 
-* SQL Hosting
+### SQL Hosting
 
 If you want your web site to be able to store and retrieve data from a database, your web server should have access to a database-system that uses the SQL language.
 
@@ -1562,19 +1562,19 @@ If your web server is hosted by an Internet Service Provider (ISP), you will hav
 
 The most common SQL hosting databases are MS SQL Server, Oracle, MySQL, and MS Access.
 
-* MS SQL Server
+#### MS SQL Server
 
 Microsoft's SQL Server is a popular database software for database-driven web sites with high traffic.
 
 SQL Server is a very powerful, robust and full featured SQL database system.
 
-* Oracle
+#### Oracle
 
 Oracle is also a popular database software for database-driven web sites with high traffic.
 
 Oracle is a very powerful, robust and full featured SQL database system.
 
-* MySQL
+#### MySQL
 
 MySQL is also a popular database software for web sites.
 
@@ -1582,7 +1582,7 @@ MySQL is a very powerful, robust and full featured SQL database system.
 
 MySQL is an inexpensive alternative to the expensive Microsoft and Oracle solutions.
 
-* Access
+#### Access
 
 When a web site requires only a simple database, Microsoft Access can be a solution.
 
