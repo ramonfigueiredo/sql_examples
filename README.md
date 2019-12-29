@@ -858,7 +858,7 @@ CREATE TABLE Persons (
 
 **Note:** In the example above there is only ONE PRIMARY KEY (PK_Person). However, the VALUE of the primary key is made up of TWO COLUMNS (ID + LastName).
 
-* SQL PRIMARY KEY on ALTER TABLE
+#### SQL PRIMARY KEY on ALTER TABLE
 
 **MySQL / SQL Server / Oracle / MS Access:**
 
@@ -878,7 +878,7 @@ ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
 
 **Note:** If you use the ALTER TABLE statement to add a primary key, the primary key column(s) must already have been declared to not contain NULL values (when the table was first created).
 
-* DROP a PRIMARY KEY Constraint
+#### DROP a PRIMARY KEY Constraint
 
 **MySQL:**
 
