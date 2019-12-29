@@ -977,7 +977,7 @@ DROP CONSTRAINT FK_PersonOrder;
 The CHECK constraint is used to limit the value range that can be placed in a column.
 
 
-* SQL CHECK on CREATE TABLE
+#### SQL CHECK on CREATE TABLE
 
 **MySQL:**
 
@@ -1017,7 +1017,7 @@ CREATE TABLE Persons (
 );
 ```
 
-* SQL CHECK on ALTER TABLE
+#### SQL CHECK on ALTER TABLE
 
 ** MySQL / SQL Server / Oracle / MS Access:
 
@@ -1035,7 +1035,7 @@ ALTER TABLE Persons
 ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');
 ```
 
-* DROP a CHECK Constraint
+#### DROP a CHECK Constraint
 
 **SQL Server / Oracle / MS Access:**
 
@@ -1055,7 +1055,7 @@ DROP CHECK CHK_PersonAge;
 
 The DEFAULT constraint is used to provide a default value for a column.
 
-* SQL DEFAULT on CREATE TABLE
+#### SQL DEFAULT on CREATE TABLE
 
 **My SQL / SQL Server / Oracle / MS Access:**
 
@@ -1455,7 +1455,7 @@ SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
 
 The SQL above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.
 
-* SQL Injection Based on Batched SQL Statements 
+#### SQL Injection Based on Batched SQL Statements 
 
 Most databases support batched SQL statement.
 
