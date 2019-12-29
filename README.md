@@ -1103,7 +1103,7 @@ ALTER TABLE Persons
 ALTER COLUMN City SET DEFAULT 'Montréal';
 ```
 
-Oracle:
+**Oracle:**
 
 ```sql
 ALTER TABLE Persons
