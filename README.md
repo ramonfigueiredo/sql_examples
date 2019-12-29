@@ -795,7 +795,7 @@ To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple colum
 ALTER TABLE Persons ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
 ```
 
-* DROP a UNIQUE Constraint
+#### DROP a UNIQUE Constraint
 
 **MySQL:**
 
