@@ -621,112 +621,969 @@ Go back to [Contents](#contents).
 * SQL Create DB
 
 ```sql
-
+CREATE DATABASE testDB;
 ```
 
 * SQL DROP DB
 
 ```sql
-
+DROP DATABASE testDB;
 ```
 
 * SQL Backup DB
 
 ```sql
+BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';
+```
 
+* SQL Backup with differential
+	* Tip: A differential back up reduces the back up time (since only the changes are backed up).
+
+```sql
+BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak' WITH DIFFERENTIAL;
 ```
 
 * SQL Create Table
 
 ```sql
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+```
 
+* Create Table Using Another Table
+
+```sql
+CREATE TABLE TestTable AS
+SELECT customername, contactname FROM customers;
 ```
 
 * SQL Drop Table
 
 ```sql
-
+DROP TABLE Persons;
 ```
 
 * SQL Alter Table
 
 ```sql
+ALTER TABLE Customers ADD Email varchar(255);
+```
 
+* ALTER TABLE - DROP COLUMN
+
+```sql
+ALTER TABLE Customers
+DROP COLUMN Email;
+```
+
+* ALTER TABLE - ALTER/MODIFY COLUMN
+
+**SQL Server / MS Access:**
+
+```sql
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
+```
+
+**My SQL / Oracle (prior version 10G):**
+
+```sql
+ALTER TABLE table_name
+MODIFY COLUMN column_name datatype;
+```
+
+**My SQL / Oracle (prior version 10G):**
+
+```sql
+ALTER TABLE table_name
+MODIFY column_name datatype;
 ```
 
 * SQL Constraints
 
-```sql
-
-```
+The following constraints are commonly used in SQL:
+	* **NOT NULL** Ensures that a column cannot have a NULL value
+	* **UNIQUE** Ensures that all values in a column are different
+	* **PRIMARY KEY** A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+	* **FOREIGN KEY** Uniquely identifies a row/record in another table
+	* **CHECK** Ensures that all values in a column satisfies a specific condition
+	* **DEFAULT** Sets a default value for a column when no value is specified
+	* **INDEX** Used to create and retrieve data from the database very quickly
 
 * SQL Not Null
 
 ```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+```
 
+* SQL NOT NULL on ALTER TABLE
+
+```sql
+ALTER TABLE Persons MODIFY Age int NOT NULL;
+);
 ```
 
 * SQL Unique
 
-```sql
+The following SQL creates a UNIQUE constraint on the "ID" column when the "Persons" table is created:
 
+**SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+**MySQL:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+```
+
+To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+```
+
+* SQL UNIQUE Constraint on ALTER TABLE
+
+To create a UNIQUE constraint on the "ID" column when the table is already created, use the following SQL:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons ADD UNIQUE (ID);
+```
+
+To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+```
+
+* DROP a UNIQUE Constraint
+
+**MySQL:**
+
+```sql
+ALTER TABLE Persons
+DROP INDEX UC_Person;
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+DROP CONSTRAINT UC_Person;
 ```
 
 * SQL Primary Key
 
-```sql
+The PRIMARY KEY constraint uniquely identifies each record in a table.
 
+* SQL PRIMARY KEY on CREATE TABLE
+
+The following SQL creates a PRIMARY KEY on the "ID" column when the "Persons" table is created:
+
+**MySQL:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+```
+
+**Note:** In the example above there is only ONE PRIMARY KEY (PK_Person). However, the VALUE of the primary key is made up of TWO COLUMNS (ID + LastName).
+
+* SQL PRIMARY KEY on ALTER TABLE
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+```
+
+To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+```
+
+**Note:** If you use the ALTER TABLE statement to add a primary key, the primary key column(s) must already have been declared to not contain NULL values (when the table was first created).
+
+* DROP a PRIMARY KEY Constraint
+
+**MySQL:**
+
+```sql
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+DROP CONSTRAINT PK_Person;
 ```
 
 * SQL Foreign Key
 
-```sql
+A FOREIGN KEY is a key used to link two tables together.
 
+* SQL FOREIGN KEY on CREATE TABLE
+
+**MySQL:**
+
+```sql
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Orders (
+    OrderID int NOT NULL PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    PersonID int FOREIGN KEY REFERENCES Persons(PersonID)
+);
+```
+
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+```
+
+* SQL FOREIGN KEY on ALTER TABLE
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Orders
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+```
+
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Orders
+ADD CONSTRAINT FK_PersonOrder
+FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+```
+
+* DROP a FOREIGN KEY Constraint
+
+**MySQL:**
+
+```sql
+ALTER TABLE Orders
+DROP FOREIGN KEY FK_PersonOrder;
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Orders
+DROP CONSTRAINT FK_PersonOrder;
 ```
 
 * SQL Check
 
-```sql
+The CHECK constraint is used to limit the value range that can be placed in a column.
 
+
+* SQL CHECK on CREATE TABLE
+
+**MySQL:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age>=18)
+);
+```
+
+To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
+
+**MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255),
+    CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
+);
+```
+
+* SQL CHECK on ALTER TABLE
+
+** MySQL / SQL Server / Oracle / MS Access:
+
+```sql
+ALTER TABLE Persons
+ADD CHECK (Age>=18);
+```
+
+To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
+
+** MySQL / SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');
+```
+
+* DROP a CHECK Constraint
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+DROP CONSTRAINT CHK_PersonAge;
+```
+
+**MySQL:**
+
+```sql
+ALTER TABLE Persons
+DROP CHECK CHK_PersonAge;
 ```
 
 * SQL Default
 
-```sql
+The DEFAULT constraint is used to provide a default value for a column.
 
+* SQL DEFAULT on CREATE TABLE
+
+**My SQL / SQL Server / Oracle / MS Access:**
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Toronto'
+);
+```
+
+The DEFAULT constraint can also be used to insert system values, by using functions like GETDATE():
+
+```sql
+CREATE TABLE Orders (
+    ID int NOT NULL,
+    OrderNumber int NOT NULL,
+    OrderDate date DEFAULT GETDATE()
+);
+```
+
+* SQL DEFAULT on ALTER TABLE
+
+**MySQL:**
+
+```sql
+ALTER TABLE Persons
+ALTER City SET DEFAULT 'Montréal';
+```
+
+**SQL Server:**
+
+```sql
+ALTER TABLE Persons
+ADD CONSTRAINT df_City
+DEFAULT 'Montréal' FOR City;
+```
+
+**MS Access:**
+
+```sql
+ALTER TABLE Persons
+ALTER COLUMN City SET DEFAULT 'Montréal';
+```
+
+Oracle:
+
+```sql
+ALTER TABLE Persons
+MODIFY City DEFAULT 'Montréal';
+```
+
+* DROP a DEFAULT Constraint
+
+**MySQL:**
+
+```sql
+ALTER TABLE Persons
+ALTER City DROP DEFAULT;
+```
+
+**SQL Server / Oracle / MS Access:**
+
+```sql
+ALTER TABLE Persons
+ALTER COLUMN City DROP DEFAULT;
 ```
 
 * SQL Index
 
-```sql
+The CREATE INDEX statement is used to create indexes in tables.
 
+Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
+
+* CREATE INDEX Example
+
+```sql
+CREATE INDEX idx_lastname ON Persons (LastName);
+```
+
+If you want to create an index on a combination of columns, you can list the column names within the parentheses, separated by commas:
+
+```sql
+CREATE INDEX idx_pname ON Persons (LastName, FirstName);
+```
+
+* DROP INDEX Statement
+
+**MS Access:**
+
+```sql
+DROP INDEX index_name ON table_name;
+```
+
+**SQL Server:**
+
+```sql
+DROP INDEX table_name.index_name;
+```
+
+**DB2/Oracle:**
+
+```sql
+DROP INDEX index_name;
+```
+
+**MySQL:**
+
+```sql
+ALTER TABLE table_name
+DROP INDEX index_name;
 ```
 
 * SQL Auto Increment
 
-```sql
+Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
 
+**Syntax for MySQL**
+
+```sql
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+```
+
+MySQL uses the AUTO_INCREMENT keyword to perform an auto-increment feature.
+
+By default, the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
+
+To let the AUTO_INCREMENT sequence start with another value, use the following SQL statement:
+
+```sql
+ALTER TABLE Persons AUTO_INCREMENT=100;
+```
+
+To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):
+
+```sql
+INSERT INTO Persons (FirstName,LastName) VALUES ('Will','Smith');
+```
+
+**Syntax for SQL Server**
+
+```sql
+CREATE TABLE Persons (
+    Personid int IDENTITY(1,1) PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+The MS SQL Server uses the IDENTITY keyword to perform an auto-increment feature.
+
+In the example above, the starting value for IDENTITY is 1, and it will increment by 1 for each new record.
+
+Tip: To specify that the "Personid" column should start at value 10 and increment by 5, change it to IDENTITY(10,5).
+
+To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):
+
+```sql
+INSERT INTO Persons (FirstName,LastName)
+VALUES ('Will','Smith');
+```
+**Syntax for Access**
+
+```sql
+CREATE TABLE Persons (
+    Personid AUTOINCREMENT PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+The MS Access uses the AUTOINCREMENT keyword to perform an auto-increment feature.
+
+By default, the starting value for AUTOINCREMENT is 1, and it will increment by 1 for each new record.
+
+**Tip:** To specify that the "Personid" column should start at value 10 and increment by 5, change the autoincrement to AUTOINCREMENT(10,5).
+
+To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):
+
+```sql
+INSERT INTO Persons (FirstName,LastName)
+VALUES ('Will','Smith');
+```
+
+**Syntax for Oracle**
+
+In Oracle the code is a little bit more tricky.
+
+You will have to create an auto-increment field with the sequence object (this object generates a number sequence).
+
+Use the following CREATE SEQUENCE syntax:
+
+```sql
+CREATE SEQUENCE seq_person
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 10;
+```
+
+The code above creates a sequence object called seq_person, that starts with 1 and will increment by 1. It will also cache up to 10 values for performance. The cache option specifies how many sequence values will be stored in memory for faster access.
+
+To insert a new record into the "Persons" table, we will have to use the nextval function (this function retrieves the next value from seq_person sequence):
+
+```sql
+INSERT INTO Persons (Personid,FirstName,LastName)
+VALUES (seq_person.nextval,'Will','Smith');
 ```
 
 * SQL Dates
 
-```sql
+The most difficult part when working with dates is to be sure that the format of the date you are trying to insert, matches the format of the date column in the database.
 
+As long as your data contains only the date portion, your queries will work as expected. However, if a time portion is involved, it gets more complicated.
+
+* SQL Date Data Types
+
+**MySQL** comes with the following data types for storing a date or a date/time value in the database:
+	* DATE - format YYYY-MM-DD
+	* DATETIME - format: YYYY-MM-DD HH:MI:SS
+	* TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+	* YEAR - format YYYY or YY
+
+**SQL Server** comes with the following data types for storing a date or a date/time value in the database:
+	* DATE - format YYYY-MM-DD
+	* DATETIME - format: YYYY-MM-DD HH:MI:SS
+	* SMALLDATETIME - format: YYYY-MM-DD HH:MI:SS
+	* TIMESTAMP - format: a unique number
+
+**Note:** The date types are chosen for a column when you create a new table in your database!
+
+```sql
+SELECT * FROM Orders WHERE OrderDate='2008-11-11'
 ```
 
 * SQL Views
 
-```sql
+In SQL, a view is a virtual table based on the result-set of an SQL statement.
 
+A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.
+
+* SQL CREATE VIEW Examples
+
+```sql
+CREATE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = "Brazil";
+```
+
+We can query the view above as follows:
+
+```sql
+SELECT * FROM [Brazil Customers];
+```
+
+The following SQL creates a view that selects every product in the "Products" table with a price higher than the average price:
+
+```sql
+CREATE VIEW [Products Above Average Price] AS
+SELECT ProductName, Price
+FROM Products
+WHERE Price > (SELECT AVG(Price) FROM Products);
+```
+
+We can query the view above as follows:
+
+```sql
+SELECT * FROM [Products Above Average Price];
+```
+
+* SQL Updating a View
+
+A view can be updated with the CREATE OR REPLACE VIEW command.
+
+* SQL CREATE OR REPLACE VIEW
+
+```sql
+CREATE OR REPLACE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName, City
+FROM Customers
+WHERE Country = "Brazil";
+```
+
+* SQL Dropping a View
+
+```sql
+DROP VIEW [Brazil Customers];
 ```
 
 * SQL Injection
 
-```sql
+SQL injection is a code injection technique that might destroy your database.
 
+SQL injection is one of the most common web hacking techniques.
+
+SQL injection is the placement of malicious code in SQL statements, via web page input.
+
+* SQL in Web Pages
+
+SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.
+
+Look at the following example which creates a SELECT statement by adding a variable (txtUserId) to a select string. The variable is fetched from user input (getRequestString):
+
+Example
+
+```sql
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+```
+
+Potential dangers of using user input in SQL statements.
+
+* SQL Injection Based on 1=1 is Always True
+
+Look at the example above again. The original purpose of the code was to create an SQL statement to select a user, with a given user id.
+
+If there is nothing to prevent a user from entering "wrong" input, the user can enter some "smart" input like this:
+
+```
+UserId: 105 OR 1=1
+```
+
+Then, the SQL statement will look like this:
+
+```sql
+SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+```
+
+The SQL above is valid and will return ALL rows from the "Users" table, since OR 1=1 is always TRUE.
+
+Does the example above look dangerous? What if the "Users" table contains names and passwords?
+
+The SQL statement above is much the same as this:
+
+```sql
+SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1;
+```
+
+A hacker might get access to all the user names and passwords in a database, by simply inserting 105 OR 1=1 into the input field.
+
+* SQL Injection Based on ""="" is Always True
+
+Here is an example of a user login on a web site:
+
+```
+Username:
+John Doe
+
+Password:
+myPass
+```
+
+Example
+
+```sql
+uName = getRequestString("username");
+uPass = getRequestString("userpassword");
+
+sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'
+```
+
+Result
+
+```sql
+SELECT * FROM Users WHERE Name ="Morgan Freeman" AND Pass ="myPass"
+```
+
+A hacker might get access to user names and passwords in a database by simply inserting " OR ""=" into the user name or password text box:
+
+```
+User Name:
+" or ""="
+
+Password:
+" or ""="
+```
+
+The code at the server will create a valid SQL statement like this:
+
+Result
+```sql
+SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""=""
+```
+
+The SQL above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.
+
+* SQL Injection Based on Batched SQL Statements 
+
+Most databases support batched SQL statement.
+
+A batch of SQL statements is a group of two or more SQL statements, separated by semicolons.
+
+The SQL statement below will return all rows from the "Users" table, then delete the "Suppliers" table.
+
+Example
+
+```sql
+SELECT * FROM Users; DROP TABLE Suppliers
+```
+
+Look at the following example:
+
+```sql
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+```
+
+And the following input:
+
+```
+User id: 105; DROP TABLE Suppliers
+```
+
+The valid SQL statement would look like this:
+
+```sql
+SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
+```
+
+* Use SQL Parameters for Protection
+
+To protect a web site from SQL injection, you can use SQL parameters.
+
+SQL parameters are values that are added to an SQL query at execution time, in a controlled manner.
+
+ASP.NET Razor Example
+
+```sql
+txtUserId = getRequestString("UserId");
+txtSQL = "SELECT * FROM Users WHERE UserId = @0";
+db.Execute(txtSQL,txtUserId);
+```
+
+Note that parameters are represented in the SQL statement by a @ marker.
+
+The SQL engine checks each parameter to ensure that it is correct for its column and are treated literally, and not as part of the SQL to be executed.
+
+Another Example
+
+```sql
+txtNam = getRequestString("CustomerName");
+txtAdd = getRequestString("Address");
+txtCit = getRequestString("City");
+txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
+db.Execute(txtSQL,txtNam,txtAdd,txtCit);
+```
+
+* Examples
+
+The following examples shows how to build parameterized queries in some common web languages.
+
+SELECT STATEMENT IN ASP.NET:
+
+```sql
+txtUserId = getRequestString("UserId");
+sql = "SELECT * FROM Customers WHERE CustomerId = @0";
+command = new SqlCommand(sql);
+command.Parameters.AddWithValue("@0",txtUserID);
+command.ExecuteReader();
+```
+
+INSERT INTO STATEMENT IN ASP.NET:
+
+```sql
+txtNam = getRequestString("CustomerName");
+txtAdd = getRequestString("Address");
+txtCit = getRequestString("City");
+txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
+command = new SqlCommand(txtSQL);
+command.Parameters.AddWithValue("@0",txtNam);
+command.Parameters.AddWithValue("@1",txtAdd);
+command.Parameters.AddWithValue("@2",txtCit);
+command.ExecuteNonQuery();
+```
+
+INSERT INTO STATEMENT IN PHP:
+
+```php
+$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City)
+VALUES (:nam, :add, :cit)");
+$stmt->bindParam(':nam', $txtNam);
+$stmt->bindParam(':add', $txtAdd);
+$stmt->bindParam(':cit', $txtCit);
+$stmt->execute();
 ```
 
 * SQL Hosting
 
+If you want your web site to be able to store and retrieve data from a database, your web server should have access to a database-system that uses the SQL language.
+
+If your web server is hosted by an Internet Service Provider (ISP), you will have to look for SQL hosting plans.
+
+The most common SQL hosting databases are MS SQL Server, Oracle, MySQL, and MS Access.
+
+* MS SQL Server
+
+Microsoft's SQL Server is a popular database software for database-driven web sites with high traffic.
+
+SQL Server is a very powerful, robust and full featured SQL database system.
+
+* Oracle
+
+Oracle is also a popular database software for database-driven web sites with high traffic.
+
+Oracle is a very powerful, robust and full featured SQL database system.
+
+* MySQL
+
+MySQL is also a popular database software for web sites.
+
+MySQL is a very powerful, robust and full featured SQL database system.
+
+MySQL is an inexpensive alternative to the expensive Microsoft and Oracle solutions.
+
+* Access
+
+When a web site requires only a simple database, Microsoft Access can be a solution.
+
+Access is not well suited for very high-traffic, and not as powerful as MySQL, SQL Server, or Oracle.
 
 Go back to [Contents](#contents).
