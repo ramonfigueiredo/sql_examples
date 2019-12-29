@@ -1019,7 +1019,7 @@ CREATE TABLE Persons (
 
 #### SQL CHECK on ALTER TABLE
 
-** MySQL / SQL Server / Oracle / MS Access:
+**MySQL / SQL Server / Oracle / MS Access:**
 
 ```sql
 ALTER TABLE Persons
@@ -1028,7 +1028,7 @@ ADD CHECK (Age>=18);
 
 To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
 
-** MySQL / SQL Server / Oracle / MS Access:**
+**MySQL / SQL Server / Oracle / MS Access:**
 
 ```sql
 ALTER TABLE Persons
