@@ -811,11 +811,11 @@ ALTER TABLE Persons
 DROP CONSTRAINT UC_Person;
 ```
 
-* SQL Primary Key
+### SQL Primary Key
 
 The PRIMARY KEY constraint uniquely identifies each record in a table.
 
-* SQL PRIMARY KEY on CREATE TABLE
+#### SQL PRIMARY KEY on CREATE TABLE
 
 The following SQL creates a PRIMARY KEY on the "ID" column when the "Persons" table is created:
 
