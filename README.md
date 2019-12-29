@@ -637,7 +637,8 @@ BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak';
 ```
 
 #### SQL Backup with differential
-	* Tip: A differential back up reduces the back up time (since only the changes are backed up).
+
+**Tip:** A differential back up reduces the back up time (since only the changes are backed up).
 
 ```sql
 BACKUP DATABASE testDB TO DISK = 'D:\backups\testDB.bak' WITH DIFFERENTIAL;
