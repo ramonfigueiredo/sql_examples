@@ -898,7 +898,7 @@ DROP CONSTRAINT PK_Person;
 
 A FOREIGN KEY is a key used to link two tables together.
 
-* SQL FOREIGN KEY on CREATE TABLE
+#### SQL FOREIGN KEY on CREATE TABLE
 
 **MySQL:**
 
@@ -937,7 +937,7 @@ CREATE TABLE Orders (
 );
 ```
 
-* SQL FOREIGN KEY on ALTER TABLE
+#### SQL FOREIGN KEY on ALTER TABLE
 
 **MySQL / SQL Server / Oracle / MS Access:**
 
@@ -956,7 +956,7 @@ ADD CONSTRAINT FK_PersonOrder
 FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
 ```
 
-* DROP a FOREIGN KEY Constraint
+#### DROP a FOREIGN KEY Constraint
 
 **MySQL:**
 
