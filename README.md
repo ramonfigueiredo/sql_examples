@@ -29,6 +29,59 @@ Some SQL Examples
 25. [SQL CASE](#sql-case)
 26. [SQL Comments](#sql-comments)
 27. [SQL Database](#sql-database)
+	1. [SQL Create DB](#sql-create-db)
+	2. [SQL DROP DB](#sql-drop-db)
+	3. [SQL Backup DB](#sql-backup-db)
+	* SQL Backup with differential
+	4. [SQL Create Table](#sql-create-table)
+	* Create Table Using Another Table
+	5. [SQL Drop Table](#sql-drop-table)
+	6. [SQL Alter Table](#sql-alter-table)
+	* ALTER TABLE - DROP COLUMN
+	* ALTER TABLE - ALTER/MODIFY COLUMN
+	7. [SQL Constraints](#sql-constraints)
+	8. [SQL Not Null](#sql-not-null)
+	* SQL NOT NULL on ALTER TABLE
+	9. [SQL Unique](#sql-unique)
+	* SQL UNIQUE Constraint on ALTER TABLE
+	* DROP a UNIQUE Constraint
+	10. [SQL Primary Key](#sql-primary-key)
+	* SQL PRIMARY KEY on CREATE TABLE
+	* SQL PRIMARY KEY on ALTER TABLE
+	* DROP a PRIMARY KEY Constraint
+	11. [SQL Foreign Key](#sql-foreign-key)
+	* SQL FOREIGN KEY on CREATE TABLE
+	* SQL FOREIGN KEY on ALTER TABLE
+	* DROP a FOREIGN KEY Constraint
+	12. [SQL Check](#sql-check)
+	* SQL CHECK on CREATE TABLE
+	* SQL CHECK on ALTER TABLE
+	* DROP a CHECK Constraint
+	13. [SQL Default](#sql-default)
+	* SQL DEFAULT on CREATE TABLE
+	* SQL DEFAULT on ALTER TABLE
+	* DROP a DEFAULT Constraint
+	14. [SQL Index](#sql-index)
+	* CREATE INDEX Example
+	* DROP INDEX Statement
+	15. [SQL Auto Increment](#sql-auto-increment)
+	16. [SQL Dates](#sql-dates)
+	* SQL Date Data Types
+	17. [SQL Views](#sql-views)
+	* SQL CREATE VIEW Examples
+	* SQL Updating a View
+	* SQL CREATE OR REPLACE VIEW
+	* SQL Dropping a View
+	18. [SQL Injection](#sql-injection)
+	* SQL in Web Pages
+	* SQL Injection Based on Batched SQL Statements 
+	* Use SQL Parameters for Protection
+	* Examples
+	19. [SQL Hosting](#sql-hosting)
+	* MS SQL Server
+	* Oracle
+	* MySQL
+	* Access
 
 ## SQL
 
